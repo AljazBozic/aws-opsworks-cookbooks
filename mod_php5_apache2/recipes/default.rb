@@ -1,5 +1,3 @@
-include_recipe 'apache2'
-
 # node[:mod_php5_apache2][:packages].each do |pkg|
 #   package pkg do
 #     action :install
@@ -29,6 +27,7 @@ execute "yum install -y php55w php55w-devel php55w-cli php55w-snmp php55w-soap p
 
 ### end inserted
 
+include_recipe 'apache2'
 
 node[:deploy].each do |application, deploy|
   if deploy[:application_type] != 'php'
