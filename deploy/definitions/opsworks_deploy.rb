@@ -14,8 +14,8 @@ define :opsworks_deploy do
     ensure_scm_package_installed(deploy[:scm][:scm_type])
 
     prepare_git_checkouts(
-      :user => deploy[:git][:user],
-      :group => deploy[:git][:group],
+      :user => deploy[:user],
+      :group => deploy[:group],
       :home => deploy[:home],
       :ssh_key => deploy[:scm][:ssh_key]
     ) if deploy[:scm][:scm_type].to_s == 'git'

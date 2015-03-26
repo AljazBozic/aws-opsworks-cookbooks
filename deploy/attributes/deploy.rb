@@ -113,10 +113,6 @@ node[:deploy].each do |application, deploy|
   default[:deploy][application][:nodejs][:stop_command] = "monit stop node_web_app_#{application}"
   default[:deploy][application][:nodejs][:port] = deploy[:ssl_support] ? 443 : 80
 
-  # git (changed)
-  default[:deploy][application][:git][:user] = 'deploy'
-  default[:deploy][application][:git][:group] = node[:opsworks][:deploy_user][:group]
-
 end
 
 default[:opsworks][:skip_uninstall_of_other_rails_stack] = false
