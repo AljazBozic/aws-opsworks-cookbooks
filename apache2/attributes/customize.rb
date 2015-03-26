@@ -8,3 +8,6 @@
 
 # The following shows how to override the Apache contact and timeout settings:
 #
+
+default[:apache][:user]          = 'deploy'
+default[:apache][:group]         = 'apache'
