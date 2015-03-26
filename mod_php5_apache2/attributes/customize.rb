@@ -22,5 +22,6 @@ default[:mod_php5_apache2][:packages] = [
 	'php55w-opcache', 
 	'php55w-pdo', 
 	'php55w-imap', 
-	'php55w-mbstring'
+	'php55w-mbstring',
+	'php55w-mcrypt'
 ]

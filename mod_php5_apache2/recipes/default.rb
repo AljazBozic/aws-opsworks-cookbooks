@@ -23,7 +23,7 @@ execute "yum remove -y php* mysql*"
 execute "yum -q makecache"
 
 # manually install php 5.5....
-execute "yum install -y php55w php55w-devel php55w-cli php55w-snmp php55w-soap php55w-xml php55w-xmlrpc php55w-process php55w-mysqlnd php55w-pecl-memcache php55w-opcache php55w-pdo php55w-imap php55w-mbstring"
+execute "yum install -y php55w php55w-devel php55w-cli php55w-snmp php55w-soap php55w-xml php55w-xmlrpc php55w-process php55w-mysqlnd php55w-pecl-memcache php55w-opcache php55w-pdo php55w-imap php55w-mbstring php55w-mcrypt"
 
 ### end inserted
 
