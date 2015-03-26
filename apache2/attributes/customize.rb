@@ -8,6 +8,3 @@
 
 # The following shows how to override the Apache contact and timeout settings:
 #
-default[:apache][:version]             = '2.4'
-default[:apache][:conf_available_dir]  = "#{node[:apache][:dir]}/conf-available"
-default[:apache][:conf_enabled_dir]    = "#{node[:apache][:dir]}/conf-enabled"

@@ -19,7 +19,7 @@ yum_repository "webtatic" do
 end
 
 # remove any existing apache/php/mysql
-execute "yum remove -y httpd httpd-tools apr apr-util php* mysql*"
+execute "yum remove -y php* mysql*"
 
 # get the metadata
 execute "yum -q makecache"
