@@ -33,10 +33,6 @@
   FileETag none
 
   RewriteEngine On
-  <% if node[:apache][:version].nil? || node[:apache][:version] == '2.2' -%>
-  RewriteLog <%= node[:apache][:log_dir] %>/<%= @application_name %>-rewrite.log
-  RewriteLogLevel 0
-  <% end -%>
 
   # Canonical host, <%= @params[:server_name] %>
   RewriteCond %{HTTP_HOST}   !^<%= @params[:server_name] %> [NC]
@@ -47,7 +43,7 @@
   RewriteCond %{SCRIPT_FILENAME} !maintenance.html
   RewriteRule ^.*$ /system/maintenance.html [L]
 
-  # apache2->default
+  # apache2 -> ubuntu
   # Redirect non-www addresses to www
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
