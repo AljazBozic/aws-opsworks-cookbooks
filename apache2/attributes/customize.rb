@@ -9,5 +9,10 @@
 # The following shows how to override the Apache contact and timeout settings:
 #
 
-default[:apache][:user]          = 'deploy'
-default[:apache][:group]         = 'apache'
+if node[:opsworks].has_key?("isVagrant")
+	default[:apache][:user]          = 'vagrant'
+	default[:apache][:group]         = 'vagrant'
+else
+	default[:apache][:user]          = 'deploy'
+	default[:apache][:group]         = 'www-data'
+end
