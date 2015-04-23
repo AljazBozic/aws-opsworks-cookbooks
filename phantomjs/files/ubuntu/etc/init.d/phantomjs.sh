@@ -24,7 +24,7 @@ do_start()
 do_stop()
 {
         echo -n "Stopping PhantomJS : "
-        pid=`ps -aefw | grep "$DAEMON" | awk '{print $2}'`
+        pid=`ps -aefw | grep "$DAEMON" | grep -v " grep " | awk '{print $2}'`
         sudo kill -9 $pid > /dev/null 2>&1
         RETVAL=$?
         if [ $RETVAL -eq 0 ]; then
