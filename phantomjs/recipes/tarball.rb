@@ -27,9 +27,9 @@ package "libfontconfig1"
 # 1. Download the tarball
 require "tmpdir"
 
-td          = Dir.tmpdir
-tmp         = File.join(td, "phantomjs-#{node.phantomjs.version}.tar.gz")
-tarball_dir = File.join(td, "phantomjs-#{node.phantomjs.version}-linux-#{node.phantomjs.arch}")
+td           = Dir.tmpdir
+tmp          = File.join(td, "phantomjs-#{node.phantomjs.version}.tar.gz")
+tarball_dir  = File.join(td, "phantomjs-#{node.phantomjs.version}-linux-#{node.phantomjs.arch}")
 
 remote_file(tmp) do
   source node.phantomjs.tarball.url
@@ -38,7 +38,7 @@ remote_file(tmp) do
 end
 
 # 2. Extract it
-# 3. Copy to /usr/local/phantomjs
+# 3. Copy to /usr/local/phantomjs and change permissions of /usr/local/phantomjs
 bash "extract #{tmp}, move it to /usr/bin/phantomjs" do
   user "root"
   cwd  "/tmp"
@@ -47,6 +47,7 @@ bash "extract #{tmp}, move it to /usr/bin/phantomjs" do
     rm -rf /usr/bin/phantomjs
     tar xfj #{tmp}
     mv --force #{tarball_dir} /usr/bin/phantomjs
+    chmod -R 777 /usr/bin/phantomjs
   EOS
 
   creates "/usr/bin/phantomjs"
@@ -69,12 +70,3 @@ cookbook_file "/etc/init.d/phantomjs.sh" do
 
   source "etc/init.d/phantomjs.sh"
 end
-
-
-# link "/usr/local/bin/phantomjs" do
-#   to "/usr/local/phantomjs/bin/phantomjs"
-
-#   owner "root"
-#   group "root"
-#   mode 0644
-# end
