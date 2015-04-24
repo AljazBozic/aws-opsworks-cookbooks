@@ -12,7 +12,7 @@ node[:deploy].each do |application, deploy|
     next
   end
 
-  node.default[:deploy][application][:action] = ':rollback'
+  node.default[:deploy][application][:action] = 'rollback'
 
   opsworks_deploy_dir do
     user deploy[:user]
