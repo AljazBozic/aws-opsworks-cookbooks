@@ -51,17 +51,6 @@
   <% else -%>
   IncludeOptional <%= @params[:local_config] %>*
   <% end -%>
-
-  # Redirect non-www addresses to www
-  RewriteCond %{HTTPS} !=on
-  RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-  RewriteCond %{HTTP_HOST} !^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.*$ [NC]
-  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
-  RewriteCond %{HTTPS} =on
-  RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-  RewriteCond %{HTTP_HOST} !^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.*$ [NC]
-  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
 
 <% if node[:deploy][@application_name][:ssl_support] -%>
@@ -127,17 +116,5 @@
   <% else -%>
   IncludeOptional <%= @params[:local_config] %>-ssl*
   <% end -%>
-
-  # Redirect non-www addresses to www
-  RewriteCond %{HTTPS} !=on
-  RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-  RewriteCond %{HTTP_HOST} !^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.*$ [NC]
-  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
-  RewriteCond %{HTTPS} =on
-  RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-  RewriteCond %{HTTP_HOST} !^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.*$ [NC]
-  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
 </VirtualHost>
 <% end -%>
